@@ -110,6 +110,21 @@ public class Day02Dao {
 		}
 	}
 
+	public int deleteOne(int num) throws ClassNotFoundException, SQLException {
+		String sql="DELETE FROM DAY02 WHERE NUM=?";
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			return pstmt.executeUpdate();
+		}finally {
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+	}
+
 }
 
 
