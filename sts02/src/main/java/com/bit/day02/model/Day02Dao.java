@@ -52,6 +52,24 @@ public class Day02Dao {
 		return list;
 	}
 
+	public void insertOne(Day02Vo bean) throws SQLException, ClassNotFoundException {
+		String sql="INSERT INTO DAY02 (NAME,SUB,CONTENT,NALJA) VALUES (?,?,?,NOW())";
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getName());
+			pstmt.setString(2, bean.getSub());
+			pstmt.setString(3, bean.getContent());
+			int result=pstmt.executeUpdate();
+		}finally {
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		
+	}
+
 }
 
 
