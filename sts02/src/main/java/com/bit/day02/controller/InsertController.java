@@ -10,6 +10,11 @@ import com.bit.day02.model.Day02Dao;
 import com.bit.day02.model.entity.Day02Vo;
 
 public class InsertController implements Controller {
+	private Day02Dao dao;
+	
+	public void setDao(Day02Dao dao) {
+		this.dao = dao;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,7 +25,6 @@ public class InsertController implements Controller {
 			bean.setName(request.getParameter("name"));
 			bean.setSub(request.getParameter("sub"));
 			bean.setContent(request.getParameter("content"));
-			Day02Dao dao= new Day02Dao();
 			dao.insertOne(bean);
 			mav.setViewName("redirect:list.bit");
 		}else {
