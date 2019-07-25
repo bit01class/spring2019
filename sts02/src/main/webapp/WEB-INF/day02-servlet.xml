@@ -21,6 +21,14 @@
 	
 	<bean name="/bbs/detail.bit" class="com.bit.day02.controller.DetailController">
 		<property name="dao" ref="dao"></property>
+		<property name="viewName" value="detail"></property>
+	</bean>
+	<bean name="/bbs/edit.bit" class="com.bit.day02.controller.DetailController">
+		<property name="dao" ref="dao"></property>
+		<property name="viewName" value="edit"></property>
+	</bean>
+	<bean name="/bbs/update.bit" class="com.bit.day02.controller.UpdateController">
+		<property name="dao" ref="dao"></property>
 	</bean>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

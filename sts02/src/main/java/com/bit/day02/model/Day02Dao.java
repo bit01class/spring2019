@@ -93,6 +93,23 @@ public class Day02Dao {
 		return null;
 	}
 
+	public int updateOne(Day02Vo bean) throws ClassNotFoundException, SQLException {
+		String sql="UPDATE DAY02 SET SUB=?,CONTENT=? WHERE NUM=?";
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try {
+			conn=getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getSub());
+			pstmt.setString(2, bean.getContent());
+			pstmt.setInt(3, bean.getNum());
+			return pstmt.executeUpdate();
+		}finally {
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+	}
+
 }
 
 
