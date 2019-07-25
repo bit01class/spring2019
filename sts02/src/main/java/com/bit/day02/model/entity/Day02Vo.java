@@ -10,6 +10,15 @@ public class Day02Vo {
 	public Day02Vo() {
 	}
 
+	public Day02Vo(int num, String name, String sub, String content, Date nalja) {
+		super();
+		this.num = num;
+		this.name = name;
+		this.sub = sub;
+		this.content = content;
+		this.nalja = nalja;
+	}
+
 	public int getNum() {
 		return num;
 	}
