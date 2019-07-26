@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import com.bit.day03.model.Day02Dao;
+import com.bit.day03.model.Day02Dao2;
 
 public class ListController implements Controller {
 	Day02Dao dao;

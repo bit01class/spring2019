@@ -35,13 +35,46 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="jumbotron">
+			  <h1>입력페이지</h1>
+			  <p>...</p>
+			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="jumbotron">
-		  <h1>Hello, world!</h1>
-		  <p>...</p>
-		  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+		<div class="col-md-12">
+			<form class="form-horizontal" action="insert.bit" method="post">
+			  <div class="form-group">
+			    <label for="sub" class="col-sm-2 control-label">제목</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="sub" id="sub" placeholder="subject">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="name" class="col-sm-2 control-label">글쓴이</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="name" id="name" placeholder="name">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <textarea class="form-control" name="content" placeholder="content"></textarea>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			    	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+			    	<div class="btn-group" role="group">
+			      		<button type="submit" class="btn btn-primary">입 력</button>
+			      	</div>
+			      	<div class="btn-group" role="group">
+			      		<button type="reset" class="btn btn-default">취 소</button>
+			    	</div>
+			    	</div>
+			    </div>
+			  </div>
+			</form>
 		</div>
 	</div>
 </div>
