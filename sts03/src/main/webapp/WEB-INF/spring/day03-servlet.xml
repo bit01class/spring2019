@@ -27,8 +27,25 @@ class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 			<prop key="/bbs/list.bit">list</prop>
 			<prop key="/bbs/add.bit">add</prop>
 			<prop key="/bbs/insert.bit">insert</prop>
+			<prop key="/bbs/detail.bit">detail</prop>
+			<prop key="/bbs/edit.bit">edit</prop>
+			<prop key="/bbs/update.bit">update</prop>
 		</props>
 	</property>
+</bean>
+<bean id="update" class="com.bit.day03.controller.UpdateController">
+	<property name="supportedMethods" value="POST" />
+	<property name="commandClass" value="com.bit.day03.model.entity.Day02Vo"/>
+	<property name="commandName" value="bean"/>
+	<property name="dao" ref="dao"/>
+</bean>
+<bean id="edit" class="com.bit.day03.controller.OneController">
+	<property name="dao" ref="dao"></property>
+	<property name="msg" value="false"></property>
+</bean>
+<bean id="detail" class="com.bit.day03.controller.OneController">
+	<property name="dao" ref="dao"></property>
+	<property name="msg" value="true"></property>
 </bean>
 <bean id="insert" class="com.bit.day03.controller.InsertController">
 	<property name="dao" ref="dao"/>

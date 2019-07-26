@@ -35,6 +35,24 @@ public class Day02Dao1 extends JdbcDaoSupport implements Day02Dao {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Day02Vo selectOne(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateOne(Day02Vo bean) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteOne(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 

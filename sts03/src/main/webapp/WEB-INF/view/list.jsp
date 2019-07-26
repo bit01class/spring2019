@@ -67,10 +67,10 @@
 						<tbody>
 							<c:forEach items="${alist }" var="bean">
 								<tr>
-									<td><a href="#">${bean.num }</a></td>
-									<td><a href="#">${bean.sub }</a></td>
-									<td><a href="#">${bean.name }</a></td>
-									<td><a href="#">${bean.nalja }</a></td>
+									<td><a href="detail.bit?idx=${bean.num }">${bean.num }</a></td>
+									<td><a href="detail.bit?idx=${bean.num }">${bean.sub }</a></td>
+									<td><a href="detail.bit?idx=${bean.num }">${bean.name }</a></td>
+									<td><a href="detail.bit?idx=${bean.num }">${bean.nalja }</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -9,5 +9,11 @@ public interface Day02Dao {
 
 	public List<Day02Vo> selectAll() throws SQLException;
 
-	public void insertOne(Day02Vo day02Vo);
+	public void insertOne(Day02Vo bean);
+
+	public Day02Vo selectOne(int num);
+	
+	public int updateOne(Day02Vo bean);
+	
+	public int deleteOne(int num);
 }
