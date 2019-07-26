@@ -3,15 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<bean id="dao" class="com.bit.day03.model.Day02Dao"></bean>
+
 <bean id="handlerMapping" 
 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 	<property name="mappings">
 		<props>
 			<prop key="/index.bit">idx</prop>
+			<prop key="/bbs/list.bit">list</prop>
 		</props>
 	</property>
 </bean>
-
+<bean id="list" class="com.bit.day03.controller.ListController">
+	<property name="dao" ref="dao"></property>
+</bean>
 <bean id="idx" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 	<property name="viewName" value="index"/>
 </bean>
