@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.context.ApplicationContext;
@@ -58,9 +59,12 @@ public class Day02DaoImplTest {
 		target.setName("test");
 		day02Dao.updateOne(target);
 		assertEquals(target, day02Dao.selectOne(target.getNum()));
+		target.setName("ев╫╨ем");
+		day02Dao.updateOne(target);
 	}
 
 	@Test
+	@Ignore
 	public void test5DeleteOne() {
 		int before=day02Dao.selectAll().size();
 		day02Dao.deleteOne(7);
