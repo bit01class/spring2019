@@ -15,9 +15,41 @@
 	class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
+	<bean id="platformTransactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
 	<bean id="day02Dao"
-		class="com.bit.day04.model.Day02DaoImpl">
-		<property name="jdbcTemplate" ref="jdbcTemplate"></property>	
+		class="com.bit.day04.model.Day02DaoImpl2">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+		<property name="transactionManager" ref="platformTransactionManager"/>	
 	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
