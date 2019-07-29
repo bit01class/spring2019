@@ -4,13 +4,36 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="handlerMapping"
-	 class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-	
-	<bean name="/index.bit" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	 	<property name="mappings">
+	 		<props>
+	 			<prop key="/index.bit">idx</prop>
+	 			<prop key="/list.bit">list</prop>
+	 			<prop key="/add.bit">add</prop>
+	 			<prop key="/insert.bit">insert</prop>
+	 		</props>
+	 	</property>
+	 </bean>
+	 
+	 
+	<bean id="insert"
+	class="com.bit.day04.controller.InsertController">
+		<property name="supportedMethods" value="POST"/>
+		<property name="commandClass" 
+					value="com.bit.day04.model.entity.Day02Vo"/>
+		<property name="commandName" value="bean"/>
+		<property name="day02Dao" ref="day02Dao"/>
+	</bean>
+	<bean id="add" 
+	class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="add"/>
+	</bean>
+	<bean id="idx" 
+	class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"/>
 	</bean>
-	<bean name="/list.bit" class="com.bit.day04.controller.ListController">
-	
+	<bean id="list" class="com.bit.day04.controller.ListController">
+		<property name="day02Dao" ref="day02Dao"/>
 	</bean>
 	
 	<bean id="viewResolver"

@@ -24,6 +24,7 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<a href="add.bit">입력</a>
 </body>
 </html>
 
