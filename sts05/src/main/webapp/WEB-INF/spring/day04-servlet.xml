@@ -3,19 +3,37 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="handlerInterceptor" class="com.bit.day04.utils.BitInterceptor"></bean>
+
 	<bean id="handlerMapping"
 	 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 	 	<property name="mappings">
 	 		<props>
-	 			<prop key="/index.bit">idx</prop>
 	 			<prop key="/list.bit">list</prop>
-	 			<prop key="/add.bit">add</prop>
 	 			<prop key="/insert.bit">insert</prop>
+	 			<prop key="/detail.bit">detail</prop>
 	 		</props>
+	 	</property>
+	 	<property name="interceptors">
+	 		<array>
+	 			<ref bean="handlerInterceptor"/>
+	 		</array>
 	 	</property>
 	 </bean>
 	 
+	<bean id="handlerMapping2"
+	 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	 	<property name="mappings">
+	 		<props>
+	 			<prop key="/index.bit">idx</prop>
+	 			<prop key="/add.bit">add</prop>
+	 		</props>
+	 	</property></bean>
 	 
+	<bean id="detail" 
+	class="com.bit.day04.controller.DetailController">
+		<property name="day02Dao" ref="day02Dao"/>
+	</bean>
 	<bean id="insert"
 	class="com.bit.day04.controller.InsertController">
 		<property name="supportedMethods" value="POST"/>
