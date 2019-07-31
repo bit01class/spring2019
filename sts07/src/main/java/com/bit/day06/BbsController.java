@@ -26,11 +26,6 @@ public class BbsController {
 		return "bbs/list";
 	}
 	
-	@RequestMapping(value = "/bbs/{idx}",method = RequestMethod.GET)
-	public String detail(@PathVariable("idx") int num,Model model) {
-		bbsService.selectOne(model, num);
-		return "bbs/detail";
-	}
 	
 	@RequestMapping(value = "/bbs/add",method = RequestMethod.GET)
 	public void add() {}
@@ -39,6 +34,30 @@ public class BbsController {
 	public String insert(@ModelAttribute BbsVo bean) {
 		bbsService.add(bean);
 		return "redirect:/bbs/";
+	}
+
+	@RequestMapping(value = "/bbs/{idx}"
+			,method = RequestMethod.GET)
+	public String detail(@PathVariable("idx") int num,Model model) {
+		bbsService.selectOne(model, num);
+		return "bbs/detail";
+	}
+	
+	@RequestMapping(value = "/bbs/{idx}"
+						,method = RequestMethod.PUT)
+	public String update(@PathVariable("idx") int num
+						,@ModelAttribute BbsVo bean) {
+		log.debug(bean.toString());
+		bbsService.update(bean);
+		return "redirect:/bbs/"+num;
+	}
+	
+	@RequestMapping(value = "/bbs/{idx}"
+			,method = RequestMethod.DELETE)
+	public String delete(@PathVariable("idx") int num) {
+		log.debug("ªË¡¶:"+num);
+		bbsService.delete(num);
+		return "redirect:/bbs";
 	}
 }
 

@@ -8,4 +8,6 @@ public interface BbsService {
 	void selectAll(Model model);
 	void selectOne(Model model,int num);
 	void add(BbsVo bean);
+	void update(BbsVo bean);
+	void delete(int num);
 }

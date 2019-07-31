@@ -10,4 +10,6 @@ public interface BbsDao {
 	BbsVo selectOne(int num);
 	void insertOne(BbsVo bean);
 	int updateCnt(int num);
+	int updateOne(BbsVo bean);
+	int deleteOne(int num);
 }

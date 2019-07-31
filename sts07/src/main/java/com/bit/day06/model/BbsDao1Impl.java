@@ -60,6 +60,18 @@ public class BbsDao1Impl implements BbsDao {
 		return jdbcTemplate.update(sql,num);
 	}
 
+	@Override
+	public int updateOne(BbsVo bean) {
+		String sql="update bbs set sub=?,content=? where num=?";
+		return jdbcTemplate.update(sql,bean.getSub(),bean.getContent(),bean.getNum());
+	}
+
+	@Override
+	public int deleteOne(int num) {
+		String sql="delete from bbs where num=?";
+		return jdbcTemplate.update(sql,num);
+	}
+
 }
 
 

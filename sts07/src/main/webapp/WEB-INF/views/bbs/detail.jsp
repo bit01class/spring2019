@@ -23,8 +23,12 @@
 				$('form button').hide();
 				$('form button[type=submit],form button[type=reset]').show();
 				$('#sub,#content').removeAttr('readonly');
+			}).next().click(function(){
+				$('#method').val('DELETE');
+				$('form').submit();
 			});
 	});
+	
 </script>
 </head>
 <body>
@@ -72,8 +76,9 @@
  </div>
  <div id="content" class="row">
    <div class="col-md-12">
-   	
+   		<!-- /bbs/1 -->
 		<form class="form-horizontal" method="post">
+			<input type="hidden" id="method" name="_method" value="PUT"/>
 		  <div class="form-group">
 		    <label for="num" class="col-sm-2 control-label">글번호</label>
 		    <div class="col-sm-10">

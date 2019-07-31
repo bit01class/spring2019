@@ -30,5 +30,27 @@ public class BbsServiceImpl implements BbsService {
 		bbsDao.insertOne(bean);
 	}
 
+	@Override
+	public void update(BbsVo bean) {
+		bbsDao.updateOne(bean);
+		
+	}
+
+	@Override
+	public void delete(int num) {
+		bbsDao.deleteOne(num);
+	}
+
 
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -24,6 +24,15 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>restful</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>restful</filter-name>
+		<url-pattern>/*</url-pattern>	
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>
