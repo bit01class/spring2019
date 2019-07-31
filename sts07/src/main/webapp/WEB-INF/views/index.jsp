@@ -39,7 +39,7 @@
         		role="button" aria-haspopup="true" aria-expanded="false">
         		BBS<span class="caret"></span></a>
         	<ul class="dropdown-menu">
-        		<li><a href="#">LIST</a></li>
+        		<li><a href="/day06/bbs">LIST</a></li>
         		<li role="separator" class="divider"></li>
         		<li><a href="#">ADD</a></li>
         	</ul>

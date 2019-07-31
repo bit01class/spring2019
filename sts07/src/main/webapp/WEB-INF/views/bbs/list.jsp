@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,8 +34,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/day06/">HOME</a></li>
-        <li class="active"><a href="/day06/intro">INTRO</a></li>
-        <li class="dropdown">
+        <li ><a href="/day06/intro">INTRO</a></li>
+        <li class="dropdown active">
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
         		role="button" aria-haspopup="true" aria-expanded="false">
         		BBS<span class="caret"></span></a>
@@ -54,13 +55,28 @@
  <div class="row">
    <div class="col-md-12">
 		<div class="jumbotron">
-		  <h1>Intro!</h1>
+		  <h1>LIST PAGE</h1>
 		</div>   
    </div>
  </div>
  <div id="content" class="row">
    <div class="col-md-12">
-   	<p>...</p>
+   	<table class="table">
+   		<tr>
+   			<th>글번호</th>
+   			<th>제목</th>
+   			<th>글쓴이</th>
+   			<th>조회수</th>
+   		</tr>
+   		<c:forEach items="${alist }" var="bean">
+   		<tr>
+   			<td>${bean.num }</td>
+   			<td>${bean.sub }</td>
+   			<td>${bean.name }</td>
+   			<td>${bean.cnt }</td>
+   		</tr>
+   		</c:forEach>
+   	</table>
    </div>
  </div>
  <div id="footer" class="row">
