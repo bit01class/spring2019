@@ -15,6 +15,7 @@
 </style>
 <script type="text/javascript" src="/day06/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/day06/js/bootstrap.js"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -55,23 +56,38 @@
  <div class="row">
    <div class="col-md-12">
 		<div class="jumbotron">
-		  <h1>LIST PAGE</h1>
-		  <a href="/day06/bbs/add">입력페이지</a>
+		  <h1>INSERT PAGE</h1>
 		</div>   
    </div>
  </div>
  <div id="content" class="row">
    <div class="col-md-12">
    	
-	<div class="list-group">
-		<c:forEach items="${alist }" var="bean">
-		  <a href="/day06/bbs/${bean.num }" class="list-group-item">
-		    <span class="badge">${bean.cnt }</span>
-		    <h4 class="list-group-item-heading">${bean.sub }</h4>
-		    <p class="list-group-item-text">${bean.name }</p>
-		  </a>
-		</c:forEach>
-	</div>
+		<form class="form-horizontal" action="../bbs" method="post">
+		  <div class="form-group">
+		    <label for="sub" class="col-sm-2 control-label">제목</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="sub" id="sub" placeholder="제목을 입력">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="name" class="col-sm-2 control-label">글쓴이</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="name" id="name" placeholder="글쓴이">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <textarea class="form-control" name="content" id="content" placeholder="내용을 입력"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-primary">SUBMIT</button>
+		      <button type="reset" class="btn btn-default">RESET</button>
+		    </div>
+		  </div>
+		</form>
 	
    </div>
  </div>

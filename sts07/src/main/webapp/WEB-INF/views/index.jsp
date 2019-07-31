@@ -41,7 +41,7 @@
         	<ul class="dropdown-menu">
         		<li><a href="/day06/bbs">LIST</a></li>
         		<li role="separator" class="divider"></li>
-        		<li><a href="#">ADD</a></li>
+        		<li><a href="/day06/bbs/add">ADD</a></li>
         	</ul>
         </li>
       </ul>

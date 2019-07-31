@@ -48,6 +48,18 @@ public class BbsDao1Impl implements BbsDao {
 		return jdbcTemplate.queryForObject(sql, rowMap,num);
 	}
 
+	@Override
+	public void insertOne(BbsVo bean) {
+		String sql="insert into bbs (name,sub,content,nalja) values (?,?,?,now())";
+		jdbcTemplate.update(sql, bean.getName(),bean.getSub(),bean.getContent());
+	}
+
+	@Override
+	public int updateCnt(int num) {
+		String sql="update bbs set cnt=cnt+1 where num=?";
+		return jdbcTemplate.update(sql,num);
+	}
+
 }
 
 

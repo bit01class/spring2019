@@ -1,35 +1,44 @@
 package com.bit.day06;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bit.day06.model.BbsDao;
+import com.bit.day06.model.entity.BbsVo;
+import com.bit.day06.service.BbsService;
 
 @Controller
 public class BbsController {
 	Logger log=LoggerFactory.getLogger(getClass());
 	@Inject
-	BbsDao bbsDao;
+	BbsService bbsService;
 
-	@RequestMapping("/bbs")
+	@RequestMapping(value = "/bbs",method = RequestMethod.GET)
 	public String list(Model model) {
-		log.debug(bbsDao.selectAll().toString());
-		model.addAttribute("alist", bbsDao.selectAll());
+		bbsService.selectAll(model);
 		return "bbs/list";
 	}
 	
-	@RequestMapping("/bbs/{idx}")
+	@RequestMapping(value = "/bbs/{idx}",method = RequestMethod.GET)
 	public String detail(@PathVariable("idx") int num,Model model) {
-		model.addAttribute("bean", bbsDao.selectOne(num));
+		bbsService.selectOne(model, num);
 		return "bbs/detail";
+	}
+	
+	@RequestMapping(value = "/bbs/add",method = RequestMethod.GET)
+	public void add() {}
+	
+	@RequestMapping(value = "/bbs",method = RequestMethod.POST)
+	public String insert(@ModelAttribute BbsVo bean) {
+		bbsService.add(bean);
+		return "redirect:/bbs/";
 	}
 }
 

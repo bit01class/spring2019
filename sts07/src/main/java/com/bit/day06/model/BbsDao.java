@@ -8,4 +8,6 @@ public interface BbsDao {
 
 	List<BbsVo> selectAll();
 	BbsVo selectOne(int num);
+	void insertOne(BbsVo bean);
+	int updateCnt(int num);
 }
