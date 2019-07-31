@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<select id="selectAll"  resultClass="com.bit.day06.model.entity.BbsVo">
+		SELECT * FROM BBS ORDER BY NUM DESC
+	</select>
+	<select id="selectOne" parameterClass="int" resultClass="com.bit.day06.model.entity.BbsVo">
+		SELECT * FROM BBS WHERE NUM=#value#
+	</select>
+	<insert id="insertOne" parameterClass="com.bit.day06.model.entity.BbsVo">
+		INSERT INTO BBS (NAME,SUB,CONTENT,NALJA) VALUES (#name#,#sub#,#content#,NOW())
+	</insert>
+	<update id="updateOne" parameterClass="com.bit.day06.model.entity.BbsVo">
+		UPDATE BBS SET SUB=#sub#, CONTENT=#content# WHERE NUM=#num#
+	</update>
+	<delete id="deleteOne" parameterClass="int">
+		DELETE FROM BBS WHERE NUM=#value#
+	</delete>
+</sqlMap>

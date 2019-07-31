@@ -10,9 +10,32 @@
 		<property name="username" value="sa"/>
 		<property name="password" value=""/>
 	</bean>
-
+	<!-- 
 	<bean id="jdbcTemplate" 
 	class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	 -->
+	
+	<bean id="sqlMapClient"
+	class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/sqlMapConfig.xml"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

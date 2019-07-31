@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.day06.model.entity.BbsVo;
 
-@Repository
+//@Repository
 public class BbsDao1Impl implements BbsDao {
 	Logger log=LoggerFactory.getLogger(getClass());
 	@Inject
