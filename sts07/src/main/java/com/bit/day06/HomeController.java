@@ -16,5 +16,6 @@ public class HomeController {
 		logger.debug("index page");
 		return "index";
 	}
-	
+	@RequestMapping("/intro")
+	public void intro() {}
 }
