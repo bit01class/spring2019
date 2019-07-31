@@ -19,27 +19,33 @@ public class BbsDao1Impl implements BbsDao {
 	Logger log=LoggerFactory.getLogger(getClass());
 	@Inject
 	JdbcTemplate jdbcTemplate;
+	private RowMapper<BbsVo> rowMap=new RowMapper<BbsVo>() {
+
+		@Override
+		public BbsVo mapRow(ResultSet rs, int rowNum) throws SQLException {
+			BbsVo bean =new BbsVo();
+			bean.setNum(rs.getInt("num"));
+			bean.setName(rs.getString("name"));
+			bean.setSub(rs.getString("sub"));
+			bean.setContent(rs.getString("content"));
+			bean.setNalja(rs.getTimestamp("nalja"));
+			bean.setCnt(rs.getInt("cnt"));
+			log.debug(bean.toString());
+			return bean;
+		}
+
+};
 
 	@Override
 	public List<BbsVo> selectAll() {
 		String sql="select * from bbs";
-		return jdbcTemplate.query(sql
-				, new RowMapper<BbsVo>() {
+		return jdbcTemplate.query(sql, rowMap);
+	}
 
-					@Override
-					public BbsVo mapRow(ResultSet rs, int rowNum) throws SQLException {
-						BbsVo bean =new BbsVo();
-						bean.setNum(rs.getInt("num"));
-						bean.setName(rs.getString("name"));
-						bean.setSub(rs.getString("sub"));
-						bean.setContent(rs.getString("content"));
-						bean.setNalja(rs.getTimestamp("nalja"));
-						bean.setCnt(rs.getInt("cnt"));
-						log.debug(bean.toString());
-						return bean;
-					}
-			
-		});
+	@Override
+	public BbsVo selectOne(int num) {
+		String sql="select * from bbs where num=?";
+		return jdbcTemplate.queryForObject(sql, rowMap,num);
 	}
 
 }

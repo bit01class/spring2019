@@ -7,4 +7,5 @@ import com.bit.day06.model.entity.BbsVo;
 public interface BbsDao {
 
 	List<BbsVo> selectAll();
+	BbsVo selectOne(int num);
 }

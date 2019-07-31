@@ -17,7 +17,7 @@
 <script type="text/javascript" src="/day06/js/bootstrap.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
 	    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -61,22 +61,17 @@
  </div>
  <div id="content" class="row">
    <div class="col-md-12">
-   	<table class="table">
-   		<tr>
-   			<th>글번호</th>
-   			<th>제목</th>
-   			<th>글쓴이</th>
-   			<th>조회수</th>
-   		</tr>
-   		<c:forEach items="${alist }" var="bean">
-   		<tr>
-   			<td>${bean.num }</td>
-   			<td>${bean.sub }</td>
-   			<td>${bean.name }</td>
-   			<td>${bean.cnt }</td>
-   		</tr>
-   		</c:forEach>
-   	</table>
+   	
+	<div class="list-group">
+		<c:forEach items="${alist }" var="bean">
+		  <a href="/day06/bbs/${bean.num }" class="list-group-item">
+		    <span class="badge">${bean.cnt }</span>
+		    <h4 class="list-group-item-heading">${bean.sub }</h4>
+		    <p class="list-group-item-text">${bean.name }</p>
+		  </a>
+		</c:forEach>
+	</div>
+	
    </div>
  </div>
  <div id="footer" class="row">
