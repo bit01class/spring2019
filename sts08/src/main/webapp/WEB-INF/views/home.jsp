@@ -45,12 +45,32 @@
 											,function(e){
 			e.preventDefault();
 
-			///
-			var options={show:true};
-			$('#myModal').modal(options);
+			$.getJSON('json/obj',$(this).attr('href')
+					,function(data){
+					myModal();
+					$('#myModal .modal-header h4').text("수정 페이지");
+					$('#myModal form input').eq(0).val(data.num);
+					$('#myModal form input').eq(1).val(data.sub);
+					$('#myModal form input').eq(2).val(data.name);
+					$('#myModal form textarea').val(data.content);
+
+					$('#myModal .modal-footer button').eq(2).show();
+			});
 		});
 
 	});
+
+	function updateOne(){
+		$.ajax({
+			url:'json/obj',
+			type:'put',
+			data:'idx=1',
+			//dataType:
+			success:function(data){
+				
+			}
+		});
+	}
 
 	function insertOne(){
 		var params=$('#myModal form').serialize();
@@ -60,11 +80,23 @@
 			getList();	
 		});
 	}
+	
+	function myModal(){
+		$('#myModal .modal-header h4').text("입력 페이지");
+		$('#myModal form input').eq(0).val('');
+		$('#myModal form input').eq(1).val('');
+		$('#myModal form input').eq(2).val('');
+		$('#myModal form textarea').val('');
+		var options={show:true};
+		$('#myModal').modal(options);
+		$('#myModal .modal-footer button').hide()
+		.eq(0).show();
+	}
 
 	function getAdd(){
 		getList();
-		var options={show:true};
-		$('#myModal').modal(options);
+		myModal();
+		$('#myModal .modal-footer button').eq(1).show();
 	}
 
 	function getList(){
@@ -80,10 +112,10 @@
 		$.getJSON('json/list',function(data){
 			var arr=data;
 			for(var i=0; i<arr.length; i++){
-			$('<tr></tr>').appendTo(table).append('<td><a href="?idx='+arr[i].num+'">'+arr[i].num+'</a></td>')
-											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].sub+'</a></td>')
-											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].name+'</a></td>')
-											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].cnt+'</a></td>')
+			$('<tr></tr>').appendTo(table).append('<td><a href="idx='+arr[i].num+'">'+arr[i].num+'</a></td>')
+											.append('<td><a href="idx='+arr[i].num+'">'+arr[i].sub+'</a></td>')
+											.append('<td><a href="idx='+arr[i].num+'">'+arr[i].name+'</a></td>')
+											.append('<td><a href="idx='+arr[i].num+'">'+arr[i].cnt+'</a></td>')
 			}
 			$('#content').html(eles);
 		});
@@ -120,6 +152,7 @@
         <h4 class="modal-title" id="myModalLabel">입력 페이지</h4>
       </div>
       	<form class="form-horizontal">
+      		<input type="hidden" name="num" />
       <div class="modal-body">
 		  <div class="form-group">
 		    <label for="sub" class="col-sm-2 control-label">제목</label>
@@ -141,7 +174,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="insertOne();">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="insertOne();">입력</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateOne();">수정</button>
       </div>
 		</form>
     </div>
