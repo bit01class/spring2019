@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.day07.model.entity.BbsVo;
 
-@Repository
+//@Repository
 public class BbsDao1Impl implements BbsDao {
 	@Inject
 	JdbcTemplate jdbcTemplate;
@@ -33,6 +33,12 @@ public class BbsDao1Impl implements BbsDao {
 			}
 			
 		});
+	}
+
+	@Override
+	public void InsertOne(BbsVo bean) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

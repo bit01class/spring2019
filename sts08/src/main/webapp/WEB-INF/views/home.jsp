@@ -45,11 +45,18 @@
 
 	});
 
+	function insertOne(){
+		var params=$('#myModal form').serialize();
+		$.post('json/add',params,function(){
+			$('#myModal form input').val("");
+			$('#myModal form textarea').val("");
+			getList();	
+		});
+	}
+
 	function getAdd(){
 		getList();
-		var options={
-				show:true
-				};
+		var options={show:true};
 		$('#myModal').modal(options);
 	}
 
@@ -127,7 +134,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="insertOne();">Save changes</button>
       </div>
 		</form>
     </div>

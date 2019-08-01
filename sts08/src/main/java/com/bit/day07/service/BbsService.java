@@ -8,4 +8,5 @@ import com.bit.day07.model.entity.BbsVo;
 public interface BbsService {
 
 	List<BbsVo> list() throws SQLException;
+	void bbsAdd(BbsVo bean) throws SQLException;
 }
