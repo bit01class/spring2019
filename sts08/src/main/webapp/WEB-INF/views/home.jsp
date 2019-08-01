@@ -10,7 +10,8 @@
 	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript">
-	
+
+
 	$(document).ready(function(){
 		pageIdx();
 		$('nav a').click(function(e){
@@ -45,9 +46,7 @@
 	});
 
 	function getAdd(){
-		$('nav a').eq(1).parent().removeClass('active');
-		$('nav a').eq(2).parent().removeClass('active');
-		$('nav a').eq(3).parent().addClass('active');
+		getList();
 		var options={
 				show:true
 				};
@@ -58,6 +57,22 @@
 		$('nav a').eq(1).parent().removeClass('active');
 		$('nav a').eq(2).parent().removeClass('active');
 		$('nav a').eq(3).parent().addClass('active');
+		var eles=$('<h1>리스트 페이지</h1>');
+		var table=$('<table class="table"></table>').appendTo(eles);
+		$('<tr></tr>').appendTo(table).append('<th>글번호</th>')
+									.append('<th>글제목</th>')
+									.append('<th>글쓴이</th>')
+									.append('<th>조회수</th>');
+		$.getJSON('json/list',function(data){
+			var arr=data;
+			for(var i=0; i<arr.length; i++){
+			$('<tr></tr>').appendTo(table).append('<td>'+arr[i].num+'</td>')
+											.append('<td>'+arr[i].sub+'</td>')
+											.append('<td>'+arr[i].name+'</td>')
+											.append('<td>'+arr[i].cnt+'</td>');
+			}
+			$('#content').html(eles);
+		});
 	}
 
 	function pageIdx(){
@@ -79,8 +94,6 @@
 
 	}
 
-	
-
 
 	</script>
 </head>
@@ -90,15 +103,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">입력 페이지</h4>
       </div>
+      	<form class="form-horizontal">
       <div class="modal-body">
-        ...
+		  <div class="form-group">
+		    <label for="sub" class="col-sm-2 control-label">제목</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="sub" id="sub" placeholder="제목입력">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="name" class="col-sm-2 control-label">글쓴이</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="name" id="name" placeholder="글쓴이입력">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <textarea class="form-control" name="content" id="cntnt" placeholder="내용입력"></textarea>
+		    </div>
+		  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
       </div>
+		</form>
     </div>
   </div>
 </div>
