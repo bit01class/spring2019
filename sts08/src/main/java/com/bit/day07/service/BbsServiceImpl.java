@@ -25,6 +25,11 @@ public class BbsServiceImpl implements BbsService {
 		bbsDao.InsertOne(bean);
 	}
 
+	@Override
+	public BbsVo detail(int num) throws SQLException {
+		return bbsDao.selectOne(num);
+	}
+
 }
 
 

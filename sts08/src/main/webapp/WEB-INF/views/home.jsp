@@ -41,7 +41,14 @@
 			e.preventDefault();
 			getAdd();
 		});
+		$(document).on('click','#content table tr td>a'
+											,function(e){
+			e.preventDefault();
 
+			///
+			var options={show:true};
+			$('#myModal').modal(options);
+		});
 
 	});
 
@@ -73,10 +80,10 @@
 		$.getJSON('json/list',function(data){
 			var arr=data;
 			for(var i=0; i<arr.length; i++){
-			$('<tr></tr>').appendTo(table).append('<td>'+arr[i].num+'</td>')
-											.append('<td>'+arr[i].sub+'</td>')
-											.append('<td>'+arr[i].name+'</td>')
-											.append('<td>'+arr[i].cnt+'</td>');
+			$('<tr></tr>').appendTo(table).append('<td><a href="?idx='+arr[i].num+'">'+arr[i].num+'</a></td>')
+											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].sub+'</a></td>')
+											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].name+'</a></td>')
+											.append('<td><a href="?idx='+arr[i].num+'">'+arr[i].cnt+'</a></td>')
 			}
 			$('#content').html(eles);
 		});

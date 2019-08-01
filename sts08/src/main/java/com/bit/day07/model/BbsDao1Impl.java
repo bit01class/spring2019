@@ -41,4 +41,10 @@ public class BbsDao1Impl implements BbsDao {
 		
 	}
 
+	@Override
+	public BbsVo selectOne(int num) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

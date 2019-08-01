@@ -7,6 +7,9 @@
     SELECT * FROM BBS ORDER BY NUM DESC
   </select>
   <insert id="insertOne" parameterType="com.bit.day07.model.entity.BbsVo">
-  	insert into bbs (name,sub,content,nalja) values (#{name},#{sub},#{content},now())
+  	INSERT INTO BBS (NAME,SUB,CONTENT,NALJA) VALUES (#{name},#{sub},#{content},NOW())
   </insert>
+  <select id="selectOne" parameterType="Integer" resultType="com.bit.day07.model.entity.BbsVo">
+  	SELECT * FROM BBS WHERE NUM=#{val}
+  </select>
 </mapper>
