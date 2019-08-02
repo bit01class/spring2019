@@ -9,6 +9,9 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.bit.day09.model.Day09Dao;
@@ -29,12 +32,15 @@ public class Day09ServiceImpl implements Day09Service {
 				, sqlSession.getMapper(Day09Dao.class).selectAll());
 	}
 
+	@Transactional(isolation =Isolation.DEFAULT 
+					,propagation = Propagation.REQUIRED)
 	@Override
 	public void add(Day09Vo bean) throws SQLException {
 //		day09Dao.insertOne(bean);
+		bean.setNum(bean.getNum()-1);
 		bean.setNalja(new Date(System.currentTimeMillis()));
 		sqlSession.getMapper(Day09Dao.class).insertOne(bean);
-		
+		bean.setNum(bean.getNum()+1);
 		bean.setNalja(new Date(System.currentTimeMillis()));
 		sqlSession.getMapper(Day09Dao.class).insertOne(bean);
 	}
