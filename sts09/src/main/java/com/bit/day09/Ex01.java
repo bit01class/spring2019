@@ -13,7 +13,7 @@ public class Ex01 {
 	public static void main(String[] args) {
 		ApplicationContext cntxt=null;
 		cntxt=new ClassPathXmlApplicationContext("applicationContext.xml");
-		Day09Dao day09Dao=(Day09Dao) cntxt.getBean("day09Dao");
+		Day09Dao day09Dao=(Day09Dao) cntxt.getBean("dao");
 		day09Dao.printBean(new Day09Vo(1111, "test", new Date()));
 		day09Dao.getBean();
 		try {

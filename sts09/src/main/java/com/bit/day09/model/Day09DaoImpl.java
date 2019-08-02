@@ -1,7 +1,10 @@
 package com.bit.day09.model;
 
+import org.springframework.stereotype.Component;
+
 import com.bit.day09.model.entity.Day09Vo;
 
+@Component(value = "dao")
 public class Day09DaoImpl implements Day09Dao {
 	
 
