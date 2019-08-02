@@ -2,6 +2,8 @@ package com.bit.day09.service;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -21,6 +23,8 @@ public class Day09ServiceImpl implements Day09Service {
 	@Override
 	public void getList(Model model) throws SQLException {
 //		model.addAttribute("alist", day09Dao.selectAll());
+//		Map<String, Integer> map=new HashMap<String, Integer>();
+//		map.put("su", 1);
 		model.addAttribute("alist"
 				, sqlSession.getMapper(Day09Dao.class).selectAll());
 	}
@@ -28,6 +32,9 @@ public class Day09ServiceImpl implements Day09Service {
 	@Override
 	public void add(Day09Vo bean) throws SQLException {
 //		day09Dao.insertOne(bean);
+		bean.setNalja(new Date(System.currentTimeMillis()));
+		sqlSession.getMapper(Day09Dao.class).insertOne(bean);
+		
 		bean.setNalja(new Date(System.currentTimeMillis()));
 		sqlSession.getMapper(Day09Dao.class).insertOne(bean);
 	}
@@ -43,6 +50,7 @@ public class Day09ServiceImpl implements Day09Service {
 //		day09Dao.deleteOne(num);
 		sqlSession.getMapper(Day09Dao.class).deleteOne(num);
 	}
+
 
 }
 

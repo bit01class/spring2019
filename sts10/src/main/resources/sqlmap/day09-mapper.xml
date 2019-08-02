@@ -4,7 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bit.day09.model.Day09Dao">
   <select id="selectAll" resultType="com.bit.day09.model.entity.Day09Vo">
-    SELECT * FROM DAY09 ORDER BY NUM DESC
+    SELECT * FROM DAY09 ORDER BY NUM
+    
+    <if test="false">
+     DESC
+  	</if>
   </select>
   <insert id="insertOne" parameterType="com.bit.day09.model.entity.Day09Vo">
   	INSERT INTO DAY09 VALUES (#{num},#{sub},#{nalja})
