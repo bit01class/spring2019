@@ -1,30 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<aop:aspectj-autoproxy/>
 
 	<bean id="day09Dao"
 	class="com.bit.day09.model.Day09DaoImpl"></bean>
-	
+
 	<bean id="methodBeforeAdvice"
 	class="com.bit.day09.aop.BeforeRun"></bean>
+
+	<aop:config>
+		<aop:aspect ref="methodBeforeAdvice">
+			<aop:pointcut expression="execution(* com.bit.day09.model.Day09Dao.*Bean(..))" id="bitBefore"/>
+			<aop:before method="before" pointcut-ref="bitBefore"/>
+		</aop:aspect>
+		<aop:aspect ref="methodBeforeAdvice">
+			<aop:pointcut expression="execution(* com.bit.day09.model.Day09Dao.*1(..))" id="bitBefore"/>
+			<aop:after-returning method="after" pointcut-ref="bitBefore"/>
+		</aop:aspect>
+		<aop:aspect ref="methodBeforeAdvice">
+			<aop:pointcut expression="execution(* com.bit.day09.model.Day09Dao.*2(..))" id="bitBefore"/>
+			<aop:around method="around" pointcut-ref="bitBefore"/>
+		</aop:aspect>
+	</aop:config>
+
+	
+	<!-- 
 	<bean id="afterReturningAdvice"
 	class="com.bit.day09.aop.AfterRun"></bean>
 	<bean id="throwsAdvice"
 	class="com.bit.day09.aop.AfterExceptionRun"></bean>
+	<bean id="methodInterceptor"
+	class="com.bit.day09.aop.AroundRun"></bean>
 	
+	<bean id="pointcut"
+	class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".*.*"></property>
+	</bean>
+	
+	<bean id="pointcutAdvisor"
+	class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut"/>
+		<property name="advice" ref="methodInterceptor"/>
+	</bean>
+	<bean
+	class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
 	<bean id="proxyFactoryBean"
 	class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target" ref="day09Dao"/>
 		<property name="interceptorNames">
 			<array>
-				<!-- 
+				<value>pointcutAdvisor</value>
+				
+				<value>methodInterceptor</value>
 				<value>throwsAdvice</value>
 				<value>afterReturningAdvice</value>
-				 -->
 				<value>methodBeforeAdvice</value>
+				
 			</array>
 		</property>
 	</bean>
-
+	 -->
 </beans>

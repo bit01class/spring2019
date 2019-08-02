@@ -13,13 +13,14 @@ public class Ex01 {
 	public static void main(String[] args) {
 		ApplicationContext cntxt=null;
 		cntxt=new ClassPathXmlApplicationContext("applicationContext.xml");
-		Day09Dao day09Dao=(Day09Dao) cntxt.getBean("proxyFactoryBean");
+		Day09Dao day09Dao=(Day09Dao) cntxt.getBean("day09Dao");
 		day09Dao.printBean(new Day09Vo(1111, "test", new Date()));
-//		try {
-//			day09Dao.func1();
-//		} catch (Exception e) {
-//		}
-//		day09Dao.func2();
+		day09Dao.getBean();
+		try {
+			day09Dao.func1();
+		} catch (Exception e) {
+		}
+		day09Dao.func2();
 	}
 
 }
