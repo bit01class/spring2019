@@ -28,9 +28,21 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@ModelAttribute Day09Vo bean) throws SQLException {
 		day09Service.add(bean);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public String edit(@ModelAttribute Day09Vo bean) throws SQLException {
+		day09Service.edit(bean);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/del", method = RequestMethod.POST)
+	public String del(int num) throws SQLException {
+		day09Service.delete(num);
 		return "redirect:/";
 	}
 	

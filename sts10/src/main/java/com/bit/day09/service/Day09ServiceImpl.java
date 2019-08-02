@@ -35,11 +35,18 @@ public class Day09ServiceImpl implements Day09Service {
 	@Override
 	public void edit(Day09Vo bean) throws SQLException {
 //		day09Dao.updateOne(bean);
+		sqlSession.getMapper(Day09Dao.class).updateOne(bean);
 	}
 
 	@Override
 	public void delete(int num) throws SQLException {
 //		day09Dao.deleteOne(num);
+		sqlSession.getMapper(Day09Dao.class).deleteOne(num);
 	}
 
 }
+
+
+
+
+

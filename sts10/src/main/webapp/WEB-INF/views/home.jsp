@@ -29,13 +29,13 @@
 		</tr>
 		<c:forEach items="${alist }" var="bean">
 		<tr>
-		<form action="edit" method="get">
+		<form action="edit" method="post">
 			<td>${bean.num }<input type="hidden" name="num" value="${bean.num }" /></td>
 			<td><input type="text" name="sub" value="${bean.sub }"/></td>
 			<td>${bean.nalja }</td>
 			<td><button>수정</button></td>
 		</form>
-		<form action="del" method="get"><input type="hidden" name="num" value="${bean.num }">
+		<form action="del" method="post"><input type="hidden" name="num" value="${bean.num }">
 			<td><button>삭제</button></td>
 		</form>
 		</tr>

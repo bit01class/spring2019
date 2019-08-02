@@ -9,4 +9,10 @@
   <insert id="insertOne" parameterType="com.bit.day09.model.entity.Day09Vo">
   	INSERT INTO DAY09 VALUES (#{num},#{sub},#{nalja})
   </insert>
+  <update id="updateOne" parameterType="com.bit.day09.model.entity.Day09Vo">
+  	UPDATE DAY09 SET SUB=#{sub} WHERE NUM=#{num}
+  </update>
+  <delete id="deleteOne" parameterType="int">
+  	DELETE FROM DAY09 WHERE NUM=#{val}
+  </delete>
 </mapper>
